@@ -23,11 +23,15 @@ def Graph():
             if i!=j+1:
                 if i!=1:
                     G.add_edge(i,j)
+                    print (i,j)
                 else:
                     if j!=3:
                         G.add_edge(i,j)
-    
+                        print (i,j)
     
     G.add_nodes_from(G.nodes(), colour='never coloured')
+    print (G.nodes)
     return G
+
+Graph()
     
