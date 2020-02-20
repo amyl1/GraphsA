@@ -5,41 +5,33 @@ import graph3
 import graph4
 import graph5
 
-
 def find_smallest_colour(G,i):
     n = len(G.nodes())
-    print(n)
-    colours=[]
-    for col in range (1,n+1):
-        colours.append(col)
-    return colours
-
-
-
-
-
-
-
+    neighbours=[]
+    adjacent=G.adj[i]
+    for vertex in adjacent:
+        neighbours.append(G.nodes[vertex]['colour'])
+    col=1
+    while col in neighbours:
+        col+=1
+    return col
 
 def greedy(G):
     global kmax
-
-
-
-
-
-
+    kmax=1
+    for vertex in G.nodes:
+        colour=find_smallest_colour(G,vertex)
+        G.nodes[vertex]['colour']=colour
+        if colour>kmax:
+            kmax=colour
 
     print()
     for i in G.nodes():
-        print('vertex', i, ': colour', G.node[i]['colour'])
+        print('vertex', i, ': colour', G.nodes[i]['colour'])
     print()
     print('The number of colours that Greedy computed is:', kmax)
 
-G=graph1.Graph()
-print (G)
-print(find_smallest_colour(G,15))
-"""
+
 print('Graph G1:')
 G=graph1.Graph()
 greedy(G)
@@ -63,4 +55,4 @@ greedy(G)
 print('Graph G5:')
 G=graph5.Graph()
 greedy(G)
-"""
+
