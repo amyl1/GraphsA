@@ -1,11 +1,4 @@
 import networkx as nx
-import graph1
-import graph2
-import graph3
-import graph4
-import graph5
-
-import networkx as nx
 import graph6
 def find_next_vertex(G):
     adj=[]
@@ -44,6 +37,7 @@ def greedy(G):
     while visited_counter<=n-1:
         visited_counter+=1
         i=find_next_vertex(G)
+        print(i)
         G.nodes[i]['visited']='yes'
         colour=find_smallest_colour(G,i)
         G.nodes[i]['colour']=colour
@@ -58,31 +52,9 @@ def greedy(G):
     print()
 
 
-print('Graph G1:')
-G=graph1.Graph()
+print('Graph G6:')
+G=graph6.Graph()
 G.add_nodes_from(G.nodes(), visited = 'no')
 greedy(G)
 
 
-print('Graph G2:')
-G=graph2.Graph()
-G.add_nodes_from(G.nodes(), visited = 'no')
-greedy(G)
-
-
-print('Graph G3:')
-G=graph3.Graph()
-G.add_nodes_from(G.nodes(), visited = 'no')
-greedy(G)
-
-
-print('Graph G4:')
-G=graph4.Graph()
-G.add_nodes_from(G.nodes(), visited = 'no')
-greedy(G)
-
-
-print('Graph G5:')
-G=graph5.Graph()
-G.add_nodes_from(G.nodes(), visited = 'no')
-greedy(G)
